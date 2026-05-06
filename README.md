@@ -1,4 +1,4 @@
-# BP Tracker Evaluator
+# Astrophotography tracking evaluator
 
 Evaluate star tracking quality from astro photos using FWHM-based star shape metrics plus a long-trail detector.
 
