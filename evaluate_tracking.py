@@ -221,10 +221,17 @@ def main() -> None:
         print(json.dumps([asdict(r) for r in results], indent=2))
         return
 
+    def format_image_name(name: str, width: int = 30) -> str:
+        if len(name) <= width:
+            return f"{name:<{width}}"
+        if width <= 3:
+            return name[:width]
+        return f"{name[: width - 3]}..."
+
     print("Tracking quality (higher score is better):")
     for r in results:
         print(
-            f"{r.image:30s} score={r.tracking_score_0_100:6.2f}  "
+            f"{format_image_name(r.image)} score={r.tracking_score_0_100:6.2f}  "
             f"FWHM={r.median_fwhm_px:5.2f}px  elong={r.median_elongation:4.2f}  "
             f"trail_idx={r.trail_index_px:4.2f}px  p95_trail={r.p95_trail_length_px:5.1f}px  stars={r.stars_used:4d}"
         )
